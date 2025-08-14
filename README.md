@@ -1,4 +1,3 @@
-<!--
 # IngatBayar - Bill Payment Reminder
 
 ## 🇮🇩 Deskripsi (Bahasa Indonesia)
@@ -44,4 +43,3 @@
 ---
 
 **Made for IBM Certification Task**
--->
