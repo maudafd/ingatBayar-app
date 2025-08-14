@@ -109,3 +109,6 @@ A comprehensive bill management application that helps users track, organize, an
 | <img width="1919" height="1139" alt="image" src="https://github.com/user-attachments/assets/7218e1f7-63ee-4d70-97bd-80d781f5d070" />| <img width="1919" height="1136" alt="image" src="https://github.com/user-attachments/assets/43036717-779f-4d4d-8fb3-8eb96d0f37cf" />|
 
 ---
+
+## 🌐 Live Demo
+[IngatBayar – Live on Netlify](https://bill-reminder-mauda.netlify.app/)
