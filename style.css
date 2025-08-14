@@ -1,0 +1,567 @@
+:root {
+  --primary-color: #ff6b35;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --info-color: #17a2b8;
+  --light-bg: #f8f9fa;
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+  --primary-color: #ff6b35;
+  --success-color: #34d058;
+  --warning-color: #ffdf5d;
+  --danger-color: #f85149;
+  --info-color: #58a6ff;
+  --light-bg: #0d1117;
+  --bg-color: #161b22;
+  --card-bg: #21262d;
+  --text-color: #f0f6fc;
+  --text-muted: #8b949e;
+  --border-color: #30363d;
+  --input-bg: #161b22;
+}
+
+/* Light mode variables */
+[data-theme="light"] {
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --text-muted: #6c757d;
+  --border-color: #e9ecef;
+  --input-bg: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color, #333);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+.header {
+  background: var(--card-bg, white);
+  border-bottom: 1px solid var(--border-color, #e9ecef);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--border-color, #e9ecef);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  color: var(--text-color, #333);
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+}
+
+.theme-toggle:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.dashboard-cards {
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: var(--card-bg, white);
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .stat-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--text-muted, #6c757d);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-card.total .stat-number {
+  color: var(--info-color);
+}
+.stat-card.paid .stat-number {
+  color: var(--success-color);
+}
+.stat-card.unpaid .stat-number {
+  color: var(--warning-color);
+}
+.stat-card.overdue .stat-number {
+  color: var(--danger-color);
+}
+
+.dashboard-title {
+  margin-bottom: 1.5rem;
+  color: var(--text-color, #333);
+}
+
+.create-btn {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.create-btn:hover {
+  background-color: #e55a2b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.filter-tabs {
+  background: var(--card-bg, white);
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+[data-theme="dark"] .filter-tabs {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.filter-btn {
+  border: none;
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin: 0.25rem;
+  color: var(--text-color, #333);
+}
+
+.filter-btn:hover {
+  background: var(--border-color, #e9ecef);
+}
+
+.filter-btn.active {
+  color: white;
+}
+
+.filter-btn.all.active {
+  background-color: #6c757d;
+}
+.filter-btn.paid.active {
+  background-color: var(--success-color);
+}
+.filter-btn.unpaid.active {
+  background-color: var(--warning-color);
+}
+.filter-btn.overdue.active {
+  background-color: var(--danger-color);
+}
+.filter-btn.draft.active {
+  background-color: var(--info-color);
+}
+
+.bills-container {
+  background: var(--card-bg, white);
+  border: 1px solid var(--border-color, #e9ecef);
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+[data-theme="dark"] .bills-container {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .bills-table td {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .bills-table th {
+  color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .bills-table tbody tr {
+  background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .bills-table tbody tr:hover {
+  background-color: var(--bg-color);
+}
+
+/* Fix any remaining text that might be invisible */
+[data-theme="dark"] .bills-table,
+[data-theme="dark"] .bills-table td,
+[data-theme="dark"] .bills-table th,
+[data-theme="dark"] .bills-container {
+  color: var(--text-color) !important;
+}
+
+/* Ensure action buttons are visible */
+[data-theme="dark"] .action-btn {
+  color: inherit;
+}
+
+/* Fix any Bootstrap default colors that override your theme */
+[data-theme="dark"] .table td,
+[data-theme="dark"] .table th {
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Make sure all text elements inherit proper colors */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] p,
+[data-theme="dark"] span,
+[data-theme="dark"] td,
+[data-theme="dark"] th,
+[data-theme="dark"] label,
+[data-theme="dark"] .form-label,
+[data-theme="dark"] .dashboard-title {
+  color: var(--text-color);
+}
+
+/* Override any default table styling */
+[data-theme="dark"] table {
+  color: var(--text-color) !important;
+}
+
+/* Additional fix for table header background */
+[data-theme="dark"] .bills-table thead {
+  background-color: var(--bg-color) !important;
+}
+
+.bills-table {
+  margin-bottom: 0;
+}
+
+.bills-table thead {
+  background-color: var(--bg-color, #f8f9fa);
+}
+
+.bills-table th {
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--text-color, #495057);
+}
+
+.bills-table td {
+  border: none;
+  padding: 1rem;
+  vertical-align: middle;
+  border-top: 1px solid var(--border-color, #e9ecef);
+  color: var(--text-color, #333);
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+}
+
+.status-paid {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-unpaid {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-overdue {
+  background-color: #f8d7da;
+  color: #721c24;
+  animation: pulse 2s infinite;
+}
+
+.status-draft {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Dark mode status badges */
+[data-theme="dark"] .status-paid {
+  background-color: rgba(52, 208, 88, 0.2);
+  color: var(--success-color);
+}
+
+[data-theme="dark"] .status-unpaid {
+  background-color: rgba(255, 223, 93, 0.2);
+  color: var(--warning-color);
+}
+
+[data-theme="dark"] .status-overdue {
+  background-color: rgba(248, 81, 73, 0.2);
+  color: var(--danger-color);
+}
+
+[data-theme="dark"] .status-draft {
+  background-color: rgba(88, 166, 255, 0.2);
+  color: var(--info-color);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.action-btn {
+  border: none;
+  background: transparent;
+  padding: 0.75rem;
+  margin: 0 0.25rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .action-btn:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.edit-btn {
+  color: var(--info-color);
+  background-color: rgba(23, 162, 184, 0.1);
+}
+
+.edit-btn:hover {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.delete-btn {
+  color: var(--danger-color);
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.delete-btn:hover {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+/* Dark mode action buttons */
+[data-theme="dark"] .edit-btn {
+  background-color: rgba(88, 166, 255, 0.2);
+}
+
+[data-theme="dark"] .delete-btn {
+  background-color: rgba(248, 81, 73, 0.2);
+}
+
+.modal-content {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background-color: var(--card-bg, white);
+  color: var(--text-color, #333);
+}
+
+[data-theme="dark"] .modal-content {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 12px 12px 0 0;
+  border-bottom: 1px solid var(--border-color, #dee2e6);
+}
+
+.form-control,
+.form-select {
+  border: 2px solid var(--border-color, #e9ecef);
+  border-radius: 8px;
+  padding: 0.75rem;
+  transition: all 0.3s ease;
+  background-color: var(--input-bg, white);
+  color: var(--text-color, #333);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 53, 0.25);
+  background-color: var(--input-bg, white);
+  color: var(--text-color, #333);
+}
+
+.form-label {
+  color: var(--text-color, #333);
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #e55a2b;
+  border-color: #e55a2b;
+}
+
+.btn-secondary {
+  background-color: var(--text-muted, #6c757d);
+  border-color: var(--text-muted, #6c757d);
+  color: white;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted, #6c757d);
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state h4 {
+  color: var(--text-color, #333);
+}
+
+/* Input group styling for dark mode */
+.input-group-text {
+  background-color: var(--input-bg, white);
+  border-color: var(--border-color, #ced4da);
+  color: var(--text-muted, #6c757d);
+}
+
+[data-theme="dark"] .input-group-text {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+/* Text colors for better contrast */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .text-success {
+  color: var(--success-color) !important;
+}
+
+[data-theme="dark"] .text-warning {
+  color: var(--warning-color) !important;
+}
+
+[data-theme="dark"] .text-danger {
+  color: var(--danger-color) !important;
+}
+
+[data-theme="dark"] .text-info {
+  color: var(--info-color) !important;
+}
+
+[data-theme="dark"] .text-muted {
+  color: var(--text-muted) !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .filter-tabs {
+    padding: 0.25rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .bills-table td,
+  .bills-table th {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .action-btn {
+    padding: 0.5rem;
+    margin: 0 0.125rem;
+  }
+
+  .dashboard-cards .col-md-3 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Ensure bill text in table is visible in dark mode without affecting status badges */
+
+/* === DARK MODE: Table Fix === */
+[data-theme="dark"] table {
+  background-color: #1e1e1e; /* dark background for table */
+}
+
+[data-theme="dark"] thead th {
+  background-color: #222; /* slightly darker header */
+  color: #fff; /* white header text */
+}
+
+[data-theme="dark"] tbody td {
+  color: #fff; /* white text in table rows */
+  background-color: #1e1e1e; /* match table bg */
+}
+
+/* Border fix so they are visible */
+[data-theme="dark"] table,
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+  border-color: #333;
+}
+
+/* === Dark Mode Search Bar Fix (Target langsung ID) === */
+[data-theme="dark"] #searchInput {
+  background-color: #2a2f36 !important;
+  color: #ffffff !important;
+  border: 1px solid #555 !important;
+}
+
+[data-theme="dark"] #searchInput::placeholder {
+  color: #cccccc !important;
+}
